@@ -1,0 +1,19 @@
+# Virtual environment (rebuildable, never upload)
+.venv/
+
+# Python cache files
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Secrets and local settings (important later!)
+.env
+
+# Editor and OS files
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Uploaded documents and local data (later steps)
+data/
+uploads/
