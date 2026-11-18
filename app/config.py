@@ -10,6 +10,10 @@ class Settings(BaseSettings):
     postgres_host: str = "localhost"
     postgres_port: int = 5432
 
+    # File upload settings
+    upload_dir: str = "uploads"
+    max_upload_mb: int = 10
+
     # Read values from the .env file in the project root
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
