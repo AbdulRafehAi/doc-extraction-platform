@@ -14,6 +14,10 @@ class Settings(BaseSettings):
     upload_dir: str = "uploads"
     max_upload_mb: int = 10
 
+        # Local LLM settings (Ollama)
+    ollama_base_url: str = "http://localhost:11434"
+    ollama_model: str = "llama3.2:3b"
+
     # Read values from the .env file in the project root
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
