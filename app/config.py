@@ -16,7 +16,7 @@ class Settings(BaseSettings):
 
         # Local LLM settings (Ollama)
     ollama_base_url: str = "http://localhost:11434"
-    ollama_model: str = "llama3.2:3b"
+    ollama_model: str = "qwen2.5:3b"
 
     # Read values from the .env file in the project root
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")

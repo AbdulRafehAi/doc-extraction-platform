@@ -1,0 +1,64 @@
+{
+  "invoice1.pdf": {
+    "vendor_name": "DEMO - Sliced Invoices",
+    "invoice_number": "INV-3337",
+    "invoice_date": "2016-01-25",
+    "currency": "USD",
+    "subtotal": 85.0,
+    "tax": 8.5,
+    "total": 93.5,
+    "line_items": [
+      {"description": "Web Design", "amount": 85.0}
+    ]
+  },
+  "invoice2.pdf": {
+    "vendor_name": "Canada Post",
+    "invoice_number": "90000001620",
+    "invoice_date": "2025-06-21",
+    "currency": "CAD",
+    "subtotal": null,
+    "tax": null,
+    "total": 1673.01,
+    "line_items": [
+      {"description": "Parcels", "amount": 97.98},
+      {"description": "Commercial/Smartmail Marketing", "amount": 216.90},
+      {"description": "Specialized services", "amount": 1240.00},
+      {"description": "Shipments", "amount": 168.13},
+      {"description": "Adjustments", "amount": -50.00}
+    ]
+  },
+  "invoice3.pdf": {
+    "vendor_name": "SuperStore",
+    "invoice_number": "36258",
+    "invoice_date": "2012-03-06",
+    "currency": "USD",
+    "subtotal": 48.71,
+    "tax": null,
+    "total": 50.10,
+    "line_items": [
+      {"description": "Global Push Button Manager's Chair, Indigo", "amount": 48.71}
+    ]
+  },
+  "invoice4.pdf": {
+    "vendor_name": null,
+    "invoice_number": null,
+    "invoice_date": "2023-06-05",
+    "currency": "USD",
+    "subtotal": null,
+    "tax": null,
+    "total": 0.0,
+    "line_items": []
+  },
+  "invoice5.pdf": {
+    "vendor_name": "SuperStore",
+    "invoice_number": "49674",
+    "invoice_date": "2013-02-20",
+    "currency": "USD",
+    "subtotal": 8204.16,
+    "tax": null,
+    "total": 8376.32,
+    "line_items": [
+      {"description": "Hon Rocking Chair, Black", "amount": 8204.16}
+    ]
+  }
+}
