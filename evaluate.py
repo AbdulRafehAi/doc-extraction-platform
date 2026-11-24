@@ -88,6 +88,7 @@ print("\n" + "=" * 40)
 if total_checks:
     print(f"Overall: {total_correct}/{total_checks} = {100 * total_correct / total_checks:.0f}% field accuracy")
 
-out = Path("eval") / f"results_{model.replace(':', '_')}.json"
+stamp = time.strftime("%Y%m%d_%H%M%S")
+out = Path("eval") / f"results_{model.replace(':', '_')}_{stamp}.json"
 out.write_text(json.dumps(results, indent=2), encoding="utf-8")
 print(f"Saved details to {out}")
