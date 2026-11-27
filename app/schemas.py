@@ -34,3 +34,18 @@ class ExtractionOut(BaseModel):
     needs_review: bool
     validation_errors: list[str] | None
     created_at: datetime
+    reviewed: bool
+    reviewed_at: datetime | None
+    
+
+    class ExtractionUpdate(BaseModel):
+    """Corrected values sent by a human reviewer."""
+
+    vendor_name: str | None = None
+    invoice_number: str | None = None
+    invoice_date: date | None = None
+    currency: str | None = None
+    subtotal: float | None = None
+    tax: float | None = None
+    total: float | None = None
+    line_items: list[dict] | None = None

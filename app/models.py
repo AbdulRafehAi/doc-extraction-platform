@@ -55,6 +55,8 @@ class Extraction(Base):
     confidence: Mapped[float | None] = mapped_column()
     needs_review: Mapped[bool] = mapped_column(Boolean, default=False)
     validation_errors: Mapped[list | None] = mapped_column(JSONB)
+    reviewed: Mapped[bool] = mapped_column(Boolean, default=False)
+    reviewed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
 
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now()

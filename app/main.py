@@ -6,7 +6,7 @@ from sqlalchemy.orm import Session
 
 from app import models  # noqa: F401  (importing registers the tables)
 from app.database import get_db
-from app.routers import documents
+from app.routers import documents, extractions
 
 app = FastAPI(
     title="Document Extraction Platform",
@@ -15,6 +15,7 @@ app = FastAPI(
 )
 
 app.include_router(documents.router)
+app.include_router(extractions.router)
 
 
 @app.get("/")
