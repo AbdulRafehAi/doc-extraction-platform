@@ -31,7 +31,7 @@ def trim_line_items(data: InvoiceData) -> None:
     """If the items already add up, do nothing. Otherwise, keep the smallest
     group of items whose amounts add up to the subtotal or total."""
     items = [i for i in data.line_items if i.amount is not None]
-    targets = [v for v in (data.subtotal, data.total) if v is not None]
+    targets = [data.subtotal] if data.subtotal is not None else []
     if not items or not targets or len(items) > MAX_ITEMS_TO_SEARCH:
         return
     if any(_close(sum(i.amount for i in items), t) for t in targets):

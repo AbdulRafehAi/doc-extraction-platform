@@ -51,3 +51,11 @@ def test_ambiguous_match_is_left_alone():
 def test_no_targets_means_no_change():
     data = InvoiceData(line_items=[LineItem(amount=5.0), LineItem(amount=6.0)])
     assert len(clean_invoice(data).line_items) == 2
+
+def test_total_alone_is_not_used_to_trim_items():
+    """Invoice 2: a wrong total must not cause correct rows to be deleted."""
+    data = InvoiceData(
+        total=1240.0,
+        line_items=[LineItem(amount=97.98), LineItem(amount=1240.0), LineItem(amount=168.13)],
+    )
+    assert len(clean_invoice(data).line_items) == 3    
