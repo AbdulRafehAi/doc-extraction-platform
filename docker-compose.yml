@@ -36,5 +36,17 @@ services:
       db:
         condition: service_healthy
 
+  ui:
+    build: ./ui
+    container_name: docextract_ui
+    restart: unless-stopped
+    environment:
+      API_URL: http://api:8000
+      PUBLIC_API_URL: http://127.0.0.1:8000
+    ports:
+      - "8501:8501"
+    depends_on:
+      - api  
+
 volumes:
   pgdata:

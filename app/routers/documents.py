@@ -2,7 +2,7 @@
 
 import uuid
 from pathlib import Path
-
+from fastapi.responses import FileResponse
 from fastapi import (
     APIRouter,
     BackgroundTasks,
@@ -98,7 +98,22 @@ def get_extraction(document_id: int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="No extraction for this document yet.")
     return extraction
 
-
+@router.get("/{document_id}/file")
+def get_document_file(document_id: int, db: Session = Depends(get_db)):
+    """Return the original uploaded file so a reviewer can look at it."""
+    document = db.get(Document, document_id)
+    if document is None:
+        raise HTTPException(status_code=404, detail="Document not found.")
+    path = Path(settings.upload_dir) / document.stored_filename
+    if not path.exists():
+        raise HTTPException(status_code=404, detail="File is missing on disk.")
+    return FileResponse(
+        path,
+        media_type=document.content_type,
+        filename=document.filename,
+        content_disposition_type="inline",
+    )
+    
 @router.get("", response_model=list[DocumentOut])
 def list_documents(db: Session = Depends(get_db)):
     """Return all documents, newest first."""
