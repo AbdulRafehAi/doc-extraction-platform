@@ -94,7 +94,7 @@ def review_tab():
         edited = st.data_editor(
             lines,
             num_rows="dynamic",
-            key=f"lines_{key}",
+            key=f"lines_{key}_{st.session_state.get('version', 0)}",
             column_config={
                 "quantity": st.column_config.NumberColumn(),
                 "unit_price": st.column_config.NumberColumn(),
@@ -122,7 +122,7 @@ def review_tab():
             call_api("PUT", f"/extractions/{key}", json=body)
             if approve:
                 call_api("POST", f"/extractions/{key}/approve")
-            st.toast("Saved")
+            st.session_state["version"] = st.session_state.get("version", 0) + 1
             st.rerun()
         except httpx.HTTPStatusError as error:
             st.error(f"The API rejected this: {error.response.text}")
