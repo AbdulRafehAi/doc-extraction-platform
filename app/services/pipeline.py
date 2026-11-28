@@ -3,7 +3,7 @@
 from datetime import date
 from decimal import Decimal
 from pathlib import Path
-
+from app.services.postprocess import clean_invoice
 from app.config import settings
 from app.database import SessionLocal
 from app.models import Document, Extraction
@@ -44,7 +44,7 @@ def process_document(document_id: int) -> None:
             if not has_real_text([text]):
                 raise ValueError("This PDF looks scanned. OCR is not built yet.")
 
-            data = extract_invoice_data(text)
+            data = clean_invoice(extract_invoice_data(text))
             errors = validate_invoice(data)
 
             # A simple rule-based score, NOT a probability from the model:

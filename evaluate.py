@@ -5,7 +5,7 @@ import json
 import sys
 import time
 from pathlib import Path
-
+from app.services.postprocess import clean_invoice
 from app.config import settings
 from app.services.llm_extract import extract_invoice_data
 from app.services.pdf_text import extract_text_from_pdf, has_real_text
@@ -60,7 +60,7 @@ for filename, expected in expected_all.items():
 
     start = time.time()
     try:
-        got = extract_invoice_data(text, model)
+        got = clean_invoice(extract_invoice_data(text, model))
     except Exception as error:  # a crash counts as everything wrong
         print(f"{filename}: ERROR {error}")
         total_checks += len(FIELDS) + 1
