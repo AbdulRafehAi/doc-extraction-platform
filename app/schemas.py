@@ -33,12 +33,12 @@ class ExtractionOut(BaseModel):
     confidence: float | None
     needs_review: bool
     validation_errors: list[str] | None
-    created_at: datetime
     reviewed: bool
     reviewed_at: datetime | None
-    
+    created_at: datetime
 
-    class ExtractionUpdate(BaseModel):
+
+class ExtractionUpdate(BaseModel):
     """Corrected values sent by a human reviewer."""
 
     vendor_name: str | None = None
